@@ -1,19 +1,17 @@
 import "./styles.css";
-import { Actions } from "./components/Actions";
+import { Buttons } from "./components/Buttons";
 import { Timer } from "./components/Timer";
-// Add redux imports here
-import { Provider } from "react-redux";
 import { store } from "./store";
+import { Provider } from "react-redux";
 
 export default function App() {
   return (
-    // Provide the provider here for Timer and Actions
-    <Provider store={store}>
-      <div className="App">
-        <h1>Simple Timer</h1>
+    <div className="App">
+      <h1>Simple Timer</h1>
+      <Provider store={store}>
         <Timer />
-        <Actions />
-      </div>
-    </Provider>
+        <Buttons />
+      </Provider>
+    </div>
   );
 }
