@@ -1,16 +1,33 @@
 import "./styles.css";
-import { Buttons } from "./components/Buttons";
-import { Timer } from "./components/Timer";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./store";
 import { Provider } from "react-redux";
 
+// components imports
+import { Navbar } from "./components/Navbar";
+
+// pages imports
+import { Home } from "./pages/Home";
+import { Timer } from "./pages/Timer";
+import { Counter } from "./pages/Counter";
+
 export default function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Navbar />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: "/timer", element: <Timer /> },
+        { path: "/counter", element: <Counter /> }
+      ]
+    }
+  ]);
+
   return (
     <div className="App">
-      <h1>Simple Timer</h1>
       <Provider store={store}>
-        <Timer />
-        <Buttons />
+        <RouterProvider router={router} />
       </Provider>
     </div>
   );

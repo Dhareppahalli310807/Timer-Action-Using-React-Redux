@@ -1,4 +1,9 @@
-const redux = require("redux");
-const { timerReducer } = require("./redux/reducers/timerReducer");
+import { configureStore } from "@reduxjs/toolkit";
 
-export const store = redux.createStore(timerReducer);
+const { timerReducer } = require("./redux/reducers/timerReducer");
+const { counterReducer } = require("./redux/reducers/counterReducer");
+const { alertReducer } = require("./redux/reducers/alertReducer");
+
+export const store = configureStore({
+  reducer: { timerReducer, counterReducer, alertReducer }
+});
